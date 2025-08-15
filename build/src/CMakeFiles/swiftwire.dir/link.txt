@@ -1,0 +1,2 @@
+/usr/bin/ar qc libswiftwire.a CMakeFiles/swiftwire.dir/client.cpp.o CMakeFiles/swiftwire.dir/server.cpp.o
+/usr/bin/ranlib libswiftwire.a

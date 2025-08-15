@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/client_example.dir/client_example.cpp.o -o client_example  -Wl,-rpath,/usr/local/lib ../src/libswiftwire.a /usr/local/lib/libboost_system.so.1.78.0 
