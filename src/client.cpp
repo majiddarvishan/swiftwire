@@ -106,8 +106,9 @@ void AsyncClient::async_handshake(uint64_t client_id,
 
 template <typename F>
 void AsyncClient::arm_timer(std::chrono::milliseconds timeout, F on_timeout) {
-    boost::system::error_code ec;
-    timer_.expires_after(timeout, ec);
+    // boost::system::error_code ec;
+    // timer_.expires_after(timeout, ec);
+    timer_.expires_after(timeout);
     timer_.async_wait([on_timeout = std::move(on_timeout)](const boost::system::error_code& tec) mutable {
         if (tec == boost::asio::error::operation_aborted) return;
         on_timeout();
@@ -115,8 +116,9 @@ void AsyncClient::arm_timer(std::chrono::milliseconds timeout, F on_timeout) {
 }
 
 void AsyncClient::cancel_timer() {
-    boost::system::error_code ig;
-    timer_.cancel(ig);
+    // boost::system::error_code ig;
+    // timer_.cancel(ig);
+    timer_.cancel(); // modern Boost: no error_code overload
 }
 
 void AsyncClient::close() {

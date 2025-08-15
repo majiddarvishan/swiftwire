@@ -26,7 +26,11 @@ private:
             self->fail_and_close(boost::asio::error::timed_out);
         });
     }
-    void cancel_timer() { boost::system::error_code ig; timer_.cancel(ig); }
+    void cancel_timer() {
+        // boost::system::error_code ig;
+        // timer_.cancel(ig);
+        timer_.cancel(); // modern Boost: no error_code overload
+    }
 
     void read_len() {
         auto self = shared_from_this();
